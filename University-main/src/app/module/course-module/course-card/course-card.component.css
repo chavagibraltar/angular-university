@@ -1,0 +1,82 @@
+
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('src/assets/courses-images/camera.jpg');
+    background-size: cover;
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    /* background-image: url('src/assets/courses-images/camera.jpg'); */
+    /* background-image: url(this.categoryIcon); */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .course-card {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.course-card:hover {
+    background-color: #f0f0f0;
+}
+
+.course-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+} */
+
+
+
+
+/* .mat-expansion-panel-header-description {
+    flex-wrap: wrap;
+}
+
+.mat-expansion-panel-header {
+    height: 10%;
+    padding: 16px;
+}
+
+.mat-panel-title {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.nextWeek{
+    border:2px solid red;
+}
+
+mat-panel-title img {   
+    height: 80px;
+} */

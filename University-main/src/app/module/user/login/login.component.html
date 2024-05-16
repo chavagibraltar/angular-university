@@ -1,0 +1,149 @@
+<div class="register-container">
+    <h1>Login</h1>
+
+    <form [formGroup]="loginForm" #loginFormElement>
+        <section>
+            <div class="example-button-row">
+                <mat-form-field>
+                    <mat-label>User Name</mat-label>
+                    <input matInput type="text" formControlName="userName">
+                    <mat-error *ngIf="!this.loginForm.value.userName.valid">This field is required</mat-error>
+                    <!-- <ng-container *ngIf="loginForm.controls['username'].errors && loginForm.controls['username'].touched">
+                <mat-error *ngIf="!loginForm.controls['username'].errors['required'] && !loginForm.controls['username'].errors['minLength']"
+                    style="color: red;">
+                    You must enter at least 3 characters
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['username'].errors['required']" style="color: red;">
+                    This field is required
+                </mat-error>
+            </ng-container> -->
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="!this.loginForm.value.password.valid">This field is
+                        <strong>required</strong></mat-error>
+                </mat-form-field>
+            </div>
+        </section>
+
+        <button type="submit" (click)="onSubmit()" class="btn btn-primary"
+            [disabled]="loginForm.invalid">submit</button>
+        <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" formControlName="username" id="username" class="form-control">
+        </div> -->
+<!-- <input type="text" id="username" formControl="userNameFormControl" required> -->
+<!-- <div *ngIf="!userNameFormControl">Name is required</div> -->
+<!-- <mat-error *ngIf="!userName">Name is required</mat-error> -->
+<!-- <div class="input-group">
+            <label for="username">User Name: </label>
+            <input matInput name="username" formControl="userNameFormControl" required>
+            <mat-error *ngIf="!userNameFormControl">Name is required</mat-error>
+
+        </div> -->
+
+<!-- <div class="input-group">
+            <label for="password">password: </label>
+            <input id="password" formControl="passwordFormControl" required>
+        </div> -->
+<!-- type="password" -->
+<!-- <div class="input-group">
+        <label for="course">שם הקורס:</label>
+        <input type="text" id="course" [(ngModel)]="course">
+      </div> -->

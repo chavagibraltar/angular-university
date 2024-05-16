@@ -1,0 +1,200 @@
+<div *ngIf="course">
+    <div id="aaa">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{course?.name}}</mat-card-title>
+                <mat-card-subtitle>{{category?.name}}
+                    <mat-icon>{{category?.iconRouting}}</mat-icon>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    <b>Course Duration:</b> {{ course?.amount }} Hours |
+                </p>
+                <p><b>Start Date:</b> {{ course?.startDate }}</p>
+                <p><b>Study Mode:</b> {{ studyMode }}</p>
+                <b>Course lecturer: {{ lecturer?.name }}</b>
+                <!-- <img mat-card-image [src]=" course?.image " /> -->
+                <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+                <img mat-card-image src={{course?.image}} class="course-image" alt="Photo of a camera">
+                <h2>{{ course?.name }}</h2>
+                <p>{{course?.description}}</p>
+                <div *ngFor="let line of course?.syllabus">
+                    <li> <mat-icon> school </mat-icon> {{ line }}</li>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+                <button [disabled]="isLecturer()" mat-button [routerLink]="['/course/edit', course.id]"
+                    class="btn btn-primary btn-block mt-3">Edit
+                    Course</button>
+                <button mat-button [routerLink]="['/course/all']" class="btn btn-primary btn-block mt-3">back</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>
+<div *ngIf="!course">
+    <h2>פרטי הקורס</h2>
+    <p>טוען קורס...</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>course-details-works!!!</p> -->
+
+<!-- <div class="course-details">
+            
+                <img [src]="course.image" alt="{{ course.name }}" class="course-image">
+                <h3>{{ course.name }}</h3>
+                <p>Num of lLessons: {{ course.lessonsCount }}</p>
+                <p>Study mode: {{ course.studyMode }}</p>
+                <p>Sylabus:</p>
+                <p>{{ course.syllabus }}</p>
+                <p>Lecturer: {{ getLecturerName(course.lecturerId) }}</p>
+                <p>Category: {{ getCategoryName(course.categoryId) }}</p>
+            </div>
+        
+            <div *ngIf="!course">
+                <p>טוען קורס...</p>
+            </div>
+        </div>
+         -->
+
+<!-- </div> -->
+
+
+<!-- <mat-card-subtitle  class="example-header-image"><img [src]="categoryIcon" alt="{{ categoryName }}"></mat-card-subtitle> -->
+<!-- <mat-card-subtitle   mat-card-avatar class="example-header-image"><img [src]="categoryIcon" alt="{{ categoryName }}"></mat-card-subtitle> -->
+<!-- ayala -->
+<!-- course-card"> -->
+<!-- <mat-card-actions>
+    <button mat-button (click)="print()">
+        <mat-icon>print</mat-icon>PRINT
+    </button>
+</mat-card-actions>
+<mat-card-actions>
+    <button mat-button *ngIf="isLecturer" (click)="editCourse()">
+        <mat-icon>edit</mat-icon>Edit Course
+    </button>
+</mat-card-actions> -->
+<!-- mine -->
+<!-- <mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{ course.name }}</mat-card-title>
+        <mat-card-subtitle>
+            {{ category.name }}
+            <mat-icon>{{ category.iconRouting }}</mat-icon>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Start Date: <span *ngIf="isStartDateInCurrentWeek(course.startDate)">{{ course.startDate |
+                date:'mediumDate' }} (This Week)</span>
+            <span *ngIf="!isStartDateInCurrentWeek(course.startDate)">{{ course.startDate | date:'mediumDate' }}
+                (no)</span>
+        </p>
+        <p>Instructor: {{ lecturer.name }}</p>
+        <p>Syllabus:</p>
+        <ul class="syllabus list-group">
+            <li class="list-group-item" *ngFor="let topic of course.syllabus">
+                <img src="topic-icon.png" alt="Topic Icon">
+                {{ topic }}
+            </li>
+        </ul>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+        <button mat-button [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary btn-block mt-3">Edit
+            Course</button>
+        <button mat-button [routerLink]="['/course/all']" class="btn btn-primary btn-block mt-3">back</button>
+    </mat-card-actions>
+    </mat-card> -->
+
+<!-- <img [src]="course.image" alt="{{ course.name }}" class="course-image"> -->
+<!-- <div class="row">
+        <div class="col-md-8">
+            <h2>{{ course.name }}</h2>
+
+            <div class="course-info">
+                <p>Course ID: {{ course.id }}</p>
+                <div class="course-category">
+                    <img mat-card-image [src]="category.iconRouting" alt="{{ category.name }}">
+
+                    <p>{{ category.name }}</p>
+                </div>
+                <p>Start Date: <span *ngIf="isStartDateInCurrentWeek(course.startDate)">{{ course.startDate |
+                        date:'mediumDate' }} (This Week)</span>
+                    <span *ngIf="!isStartDateInCurrentWeek(course.startDate)">{{ course.startDate | date:'mediumDate' }}
+                        (no)</span>
+                </p>
+                <p>Instructor: {{ lecturer.name }}</p>
+            </div>
+
+            <p>Syllabus:</p>
+            <ul class="syllabus list-group">
+                <li class="list-group-item" *ngFor="let topic of course.syllabus">
+                    <img src="topic-icon.png" alt="Topic Icon">
+                    {{ topic }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <img [src]="course.image" alt="{{ course.name }}" class="course-image img-fluid">
+
+            <button [routerLink]="['/courses', course.id, 'edit']" class="btn btn-primary btn-block mt-3">Edit
+                Course</button>
+            <button [routerLink]="['/course/all']" class="btn btn-primary btn-block mt-3">back</button>
+        </div>
+    </div> -->

@@ -1,0 +1,164 @@
+<!-- <p>add-edit-course works!</p> -->
+<div class="container">
+    <h2>{{ isEditing ? 'Edit Course' : 'Add New Course' }}</h2>
+
+    <form [formGroup]="addEditCourseForm" #addEditCourseFormElement>
+        <mat-form-field>
+            <mat-label>Course Name</mat-label>
+            <input matInput type="text" formControlName="name">
+            <mat-error *ngIf="!this.addEditCourseForm.value.name">This field is
+                <strong>required</strong></mat-error>
+            <!-- <mat-error *ngIf="registerForm.controls['userName'].errors['required']">Name is <strong>required</strong></mat-error> -->
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Course Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+            <mat-error *ngIf="!this.addEditCourseForm.value.description">This field is
+                <strong>required</strong></mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="categoryId" id="categoryId">
+                <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!this.addEditCourseForm.value.categoryId">This field is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Lessons Count</mat-label>
+            <input matInput type="number" formControlName="lessonsCount">
+            <mat-error *ngIf="!this.addEditCourseForm.value.lessonsCount">This field is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-form-field">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="startDate">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="!this.addEditCourseForm.value.startDate">This field is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>study Mode</mat-label>
+            <mat-select formControlName="studyMode" id="categstudyModeoryId">
+                <mat-option [value]="0">Frontal</mat-option>
+                <mat-option [value]="1">Zoom</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!this.addEditCourseForm.value.studyMode">This field is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Lecturer</mat-label>
+            <mat-select formControlName="lecturerId" id="lecturerId">
+                <mat-option *ngFor="let lecturer of lecturers" [value]="lecturer.id">{{ lecturer.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!this.addEditCourseForm.value.lecturerId">This field is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Course Image</mat-label>
+            <input matInput type="taxt" formControlName="image">
+            <mat-error *ngIf="!this.addEditCourseForm.value.image">This field is
+                <strong>required</strong></mat-error>
+        </mat-form-field>
+        <br>
+        <button type="button" (click)="onSave()" class="btn btn-primary"
+            [disabled]="addEditCourseForm.invalid">Save</button>
+        <button type="button" (click)="onCancel()" class="btn btn-secondary">Cancle</button>
+        <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="form-group">
+        <label for="id">קוד קורס:</label>
+        <input type="text" formControlName="id" id="id" class="form-control" [disabled]="true">
+    </div> -->
+<!-- <div class="form-group">
+        <label for="name">שם קורס:</label>
+        <input type="text" formControlName="name" id="name" class="form-control">
+    </div> -->
+<!-- <br>
+        <mat-form-field>
+            <mat-label>Course Description</mat-label>
+            <input matInput type="text" formControlName="description">
+            <mat-error *ngIf="!this.addEditCourseForm.value.description">This field is
+                <strong>required</strong></mat-error>
+        </mat-form-field> -->
+<!-- <div class="form-group">
+            <label for="categoryId">קטגוריה:</label>
+            <select formControlName="categoryId" id="categoryId" class="form-control">
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+        </div> -->
+<!-- <div class="form-group">
+            <label for="lessonsCount">מספר שיעורים:</label>
+            <input type="number" formControlName="lessonsCount" id="lessonsCount" class="form-control">
+        </div> -->
+<!-- <mat-form-field>
+            <mat-label>Start Date</mat-label>
+            <input matInput type="date" formControlName="startDate">
+            <mat-error *ngIf="!this.addEditCourseForm.value.startDate">This field is
+                <strong>required</strong></mat-error>
+        </mat-form-field> -->
+<!-- <mat-error *ngIf="registerForm.controls['userName'].errors['required']">Name is <strong>required</strong></mat-error> -->
+<!-- <div class="form-group">
+            <label for="startDate">תאריך התחלה:</label>
+            <input type="date" formControlName="startDate" id="startDate" class="form-control">
+        </div> -->
+<!-- <div class="form-group">
+        <label for="syllabus">סיליבוס:</label>
+        <div class="syllabus-items">
+          <div *ngFor="let item of syllabusItems; let i = index">
+            <textarea [(ngModel)]="syllabusItems[i]" class="form-control"></textarea>
+            <button type="button" (click)="removeSyllabusItem(i)" class="btn btn-danger">הסר</button>
+          </div>
+          <button type="button" (click)="addSyllabusItem()" class="btn btn-primary">הוסף נושא</button>
+        </div>
+      </div> -->
+<!-- <div class="form-group">
+            <label for="studyMode">אופן הלמידה:</label>
+            <select formControlName="studyMode" id="studyMode" class="form-control">
+                <option *ngFor="let option of studyModeOptions; let i = index" [value]="i">{{ option }}</option>
+            </select>
+        </div> -->
+<!-- <div class="form-group">
+            <label for="lecturerId">מרצה:</label>
+            <select formControlName="lecturerId" id="lecturerId" class="form-control">
+                <option *ngFor="let lecturer of lecturers" [value]="lecturer.id">{{ lecturer.name }}</option>
+            </select>
+        </div> -->

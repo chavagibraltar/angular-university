@@ -1,0 +1,181 @@
+<mat-card class="example-card course-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-subtitle>{{ lecturer?.name }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="course?.image" alt="{{ course?.name }}" class="course-image">
+    <mat-card-content>
+        <p><b>{{ course?.name }}</b></p>
+        <p>Lessons count: {{ course?.amount }}</p>
+        <p>Study mode: {{ course?.studyMode }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onCardClicked()"  [disabled]="!isLoggedIn()">Details</button>
+    </mat-card-actions>
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div mat-card-avatar  [style]="{'background-image': 'url(' + categoryIcon + ');background-size: cover'}"></div> -->
+<!-- <div mat-card-avatar class="example-header-image" [style]="{'background-image': 'url(' + categoryIcon + ');background-size: cover'}"></div> -->
+<!-- <img mat-card-avatar [src]="categoryIcon" class="example-header-image"/> -->
+<!-- <img mat-card-avatar [src]="src/assets/courses-images/camera.jpg" class="example-header-image"/> -->
+<!-- <mat-card-title>{{ course?.name }}</mat-card-title> -->
+
+<!-- <img mat-card-image [src]="categoryIcon" alt="{{ course?.name }}" class="course-image"> -->
+
+<!-- <course-details [courseId]="course?.id"></course-details> -->
+<!-- <div class="course-card" (click)="onCardClicked()">
+    <img [src]="course.image" alt="{{ course.name }}" class="course-image">
+    <h3>{{ course.name }}</h3>
+    <p>מספר שיעורים: {{ course.lessonsCount }}</p>
+    <p>אופן הלמידה: {{ course.studyMode }}</p>
+</div>
+<br> -->
+<!-- <mat-card class="example-card course-card" (click)="onCardClicked()">
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{ course.name }}</mat-card-title>
+            <mat-card-subtitle>Lessons count: {{ course.lessonsCount }}</mat-card-subtitle>
+            <mat-card-subtitle>Study mode: {{ course.studyMode }}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="course.image" alt="{{ course.name }}" class="course-image">
+        </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+        {{longText}}
+    </mat-card-content>
+</mat-card> -->
+<!-- <img mat-card-lg-image src="../../../assets/courses-images/english.jpg"> -->
+<!-- //"https://material.angular.io/assets/img/examples/shiba2.jpg"> -->
+<!-- <br> -->
+
+<!-- <mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                This is the expansion title
+            </mat-panel-title>
+            <mat-panel-description>
+                This is a summary of the content
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+
+    (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel>
+            <mat-panel-title>
+                Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{ course.name }}</mat-card-title>
+                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="course.image" alt="{{ course.name }}" class="course-image">
+                <mat-card-content>
+                    <p>Lessons count: {{ course.lessonsCount }}</p>
+                    <p>Study mode: {{ course.studyMode }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-expansion-panel>
+
+        <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+</mat-accordion> -->
+
+<!-- <br>
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ course.name }}</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="course.image" alt="{{ course.name }}" class="course-image">
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+
+        <mat-card-subtitle>Lessons count: {{ course.lessonsCount }}</mat-card-subtitle>
+        <mat-card-subtitle>Study mode: {{ course.studyMode }}</mat-card-subtitle>
+        <p>Lessons count: {{ course.lessonsCount }}</p>
+        <p>Study mode: {{ course.studyMode }}</p>
+        <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card> -->
+
+<!-- <mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ course.name }}</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="course.image" alt="{{ course.name }}" class="course-image">
+    <mat-card-content>
+        <mat-card-subtitle>Lessons count: {{ course.lessonsCount }}</mat-card-subtitle>
+        <mat-card-subtitle>Study mode: {{ course.studyMode }}</mat-card-subtitle>
+        <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card> -->
+
+<!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+
+
+
+<!-- <mat-expansion-panel [class.nextWeek]="checkDate()">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <img src={{course.image}} alt={{course.name}} />
+        </mat-panel-title>
+        <mat-panel-description>
+            <b>{{ course.name}}</b>
+            Number of Lessons: {{course.lessonsCount}}
+            <br>
+            Instruction Mode: {{course.instructionMode}}
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <course-details [course]="course"></course-details>
+</mat-expansion-panel> -->
