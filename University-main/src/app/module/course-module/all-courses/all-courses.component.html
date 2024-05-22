@@ -1,12 +1,34 @@
-<p>all-courses</p>
-
-
-<div class="all-courses-container">
+<div class="course-filter">
+    <!-- <h2>סינון קורסים</h2> -->
+    <form [formGroup]="courseFilterForm">
+        <mat-form-field class="filter-section" (change)="filterCourses()">
+            <mat-label for="category">Category</mat-label>
+            <mat-select id="category" formControlName="category">
+                <mat-option [value]="-1">All</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="filter-section" (change)="filterCourses()">
+            <mat-label for="courseName">Course Name</mat-label>
+            <input matInput type="text" id="courseName" formControlName="courseName">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <mat-button-toggle-group (change)="filterCourses()" formControlName="studyMode">
+            <mat-button-toggle value="0" [checked]="true">All</mat-button-toggle>
+            <mat-button-toggle value="1">
+                <mat-icon>people</mat-icon>Frontal
+            </mat-button-toggle>
+            <mat-button-toggle value="2">
+                <mat-icon>videocam</mat-icon>Digital
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <br>
+    </form>
+</div>
+<div class="all-courses-container filtered-courses">
     <h2>all courses</h2>
-
     <div class="courses-list">
-        <course-card *ngFor="let course of courses" [course]="course"
-            (courseClicked)="onCourseClicked(course.id)"></course-card>
+        <course-card *ngFor="let course of filteredCourses" [course]="course"></course-card>
     </div>
 </div>
 
@@ -77,4 +99,4 @@
 <mat-accordion class="headers-align" multi>
     <course-card *ngFor="let course of filteredCourses" [course]="course"></course-card>
 </mat-accordion> -->
-<course-card></course-card>
+<!-- <course-card></course-card> -->

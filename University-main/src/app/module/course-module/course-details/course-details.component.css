@@ -1,3 +1,7 @@
+.nextWeek{
+  color: red;
+}
+
 
 .example-card {
   max-width: 400px;
@@ -5,11 +9,7 @@
 #aaa {
   display: flex;
   justify-content: center;
-  /* margin: 300px; */
-  /* margin-bottom: 300px; */
   margin-top: 5%;
-  /* margin: 20px; */
-  /* opacity: 0.7; */
 }
 .course-details {
   padding: 20px;

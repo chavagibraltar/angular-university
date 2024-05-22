@@ -8,17 +8,7 @@
                     <mat-label>User Name</mat-label>
                     <input matInput type="text" formControlName="userName">
                     <mat-error *ngIf="!this.loginForm.value.userName.valid">This field is required</mat-error>
-                    <!-- <ng-container *ngIf="loginForm.controls['username'].errors && loginForm.controls['username'].touched">
-                <mat-error *ngIf="!loginForm.controls['username'].errors['required'] && !loginForm.controls['username'].errors['minLength']"
-                    style="color: red;">
-                    You must enter at least 3 characters
-                </mat-error>
-                <mat-error *ngIf="loginForm.controls['username'].errors['required']" style="color: red;">
-                    This field is required
-                </mat-error>
-            </ng-container> -->
                 </mat-form-field>
-
 
                 <mat-form-field>
                     <mat-label>Password</mat-label>

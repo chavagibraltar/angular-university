@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       userName: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
-
   }
   onSubmit() {
     console.log("login");
@@ -50,6 +49,7 @@ export class LoginComponent implements OnInit {
           console.log("lecturer - yes");
           sessionStorage.setItem("IsLecturer", JSON.stringify(true));
           sessionStorage.setItem("User", JSON.stringify(currentLecturer));
+          sessionStorage.setItem("UserId", JSON.stringify(currentLecturer.id));
           this.router.navigate(['/course/all']);
         }
         else {

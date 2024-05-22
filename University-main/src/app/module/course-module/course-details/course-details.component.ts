@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { CategoryService } from '../category.service';
 import { Course } from 'src/model/course.model';
@@ -16,40 +15,39 @@ import { User } from 'src/model/user.model';
 
 export class CourseDetailsComponent implements OnInit, OnDestroy {
 
-  subscription: Subscription;
   courseId: number | null;
   course: Course;
   category: Category;
   lecturer: User | undefined;
   studyMode: string;
-  // isLecturer: boolean;
+  isNextWeek: boolean = false;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private courseService: CourseService,
     private categoryService: CategoryService,
     private userService: UserService,
     private elementRef: ElementRef
-  ) { console.log("click") }
+  ) { }
 
   ngOnInit(): void {
-    console.log("details");
     this.route.paramMap.subscribe((params) => {
-      console.log("param: ", params.get('id'));
       this.courseId = +params.get('id');
     })
     this.courseService.getCourseById(this.courseId).subscribe((c: Course) => {
       this.course = c;
+      if (this.course) {
+        this.getCategory();
+        this.getLecturer();
+        this.convertStudyMode();
+        this.isNextWeek = this.isStartDateInCurrentWeek();
+        // this.getCategoryIcon(this?.course?.categoryId);
+        // this.elementRef.nativeElement.querySelector('.example-header-image').style.backgroundImage = `url(${this.category?.iconRouting})`;
+      }
     });
-    if (this.course) {
-      this.getCategory();
-      this.getLecturer();
-      // this.getCategoryIcon(this?.course?.categoryId);
-      // this.elementRef.nativeElement.querySelector('.example-header-image').style.backgroundImage = `url(${this.category?.iconRouting})`;
-      this.convertStudyMode();
-    }
-    // this.checkIsLecturer();
   }
+
   ngOnDestroy(): void {
     console.log("details: Method not implemented.");
     // throw new Error('Method not implemented.');
@@ -59,22 +57,17 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
     this.categoryService.getCategoryById(this.course.categoryId).subscribe((category: Category) => {
       this.category = category;
     });
-    console.log("category id: ", this.category.id);
-    console.log("category Name: ", this.category.name);
-    console.log("category iconRouting: ", this.category.iconRouting);
   }
 
   getLecturer(): void {
-
     this.userService.getLecturerById(this.course.lecturerId).subscribe((lecturer: User) => {
-
       this.lecturer = lecturer;
     });
-    console.log("lecturer Id: ", this.lecturer.id);
-    console.log("lecturer Name: ", this.lecturer.name);
   }
 
-  isStartDateInCurrentWeek(date: Date): boolean {
+  isStartDateInCurrentWeek(): boolean {
+    const date = new Date(this.course.startDate);
+
     // קבלת התאריך הנוכחי
     const today = new Date();
 
@@ -86,6 +79,7 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
 
     // בדיקה האם התאריך המתקבל נמצא בין תחילת וסוף השבוע הנוכחי
     return date >= startOfWeek && date <= endOfWeek;
+
   }
 
   convertStudyMode() {
@@ -96,7 +90,13 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
   }
 
   isLecturer(): boolean {
-    return JSON.parse(sessionStorage.getItem('isLecturer'));
+    if(JSON.parse(sessionStorage?.getItem('IsLecturer'))){
+      let userId: number;
+      const userIdStorage = sessionStorage.getItem('UserId');
+      userId = JSON.parse(userIdStorage);
+      return this.lecturer?.id == userId;
+    }
+    return false;
   }
 }
 

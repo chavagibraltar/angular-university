@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +19,7 @@ import { CourseService } from "./course.service";
 import { CategoryService } from "./category.service";
 import { AddEditCourseComponent } from './add-edit-course/add-edit-course.component';
 import { LecturerService } from "../user/lecturer.service";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 // import {provideNativeDateAdapter} from '@angular/material/core';
 
@@ -26,7 +27,10 @@ import { LecturerService } from "../user/lecturer.service";
     declarations: [AllCoursesComponent, CourseCardComponent, CourseDetailsComponent, AddEditCourseComponent],
     imports: [CommonModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, MatCardModule,
         MatButtonModule, MatExpansionModule, MatIconModule, 
-        MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule 
+        MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule
+        , FormsModule
+        , MatButtonToggleModule
+        // , FormsModule, ReactiveFormsModule 
     ],
     providers: [CourseService, CategoryService, LecturerService],
     exports: []

@@ -1,9 +1,11 @@
-﻿namespace server.models
+﻿using Microsoft.OData.Edm;
+
+namespace server.models
 {
     public enum StudyMode { Frontal = 1, Digital = 2 };
     public class Course
     {
-        static int index = 0;
+        static int index = 1;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }          
@@ -14,7 +16,7 @@
         public StudyMode StudyMode { get; set; }
         public int LecturerId { get; set; }
         public string Image { get; set; }
-        public Course(string name,string description,int catId,int amount,string startDate, string[]syllabus, StudyMode studyMode, int lecturerId,string image)
+        public Course(string name,string description,int catId,int amount, string startDate, string[]syllabus, StudyMode studyMode, int lecturerId,string image)
         {
             Id = index++;
             Name = name;

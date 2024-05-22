@@ -3,6 +3,13 @@ section {
     display: table;
 }
 
+.input-section {
+    margin-bottom: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+
 .example-label {
     display: table-cell;
     font-size: 14px;

@@ -1,3 +1,10 @@
+.first{
+    opacity: 0.0001%;
+    max-width: 0.00001px;
+    max-height: 0.00001px;
+}
+
+
 .container {
     max-width: 800px;
     margin: 0 auto;

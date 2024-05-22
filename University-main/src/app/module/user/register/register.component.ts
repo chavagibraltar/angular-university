@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
       userName: new FormControl(this.userN, [Validators.required]),
       address: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
-      // email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     });
     this.courseForm = new FormGroup({
@@ -59,7 +58,7 @@ export class RegisterComponent implements OnInit {
     const address = this.registerForm.value.address;
     const email = this.registerForm.value.email;
     const password = this.registerForm.value.password;
-    const course = this.courseForm.value.course;
+
 
     console.log("username: ", userName);
     console.log("password:", password);
@@ -112,6 +111,7 @@ export class RegisterComponent implements OnInit {
                   else {
                     if (this.isLecturer == true) {
                       console.log("lecturer - yes aaaaaaaaaaaaaaa");
+                      const course = this.courseForm.value.course;
                       this.user = {
                         id: 0, name: userName, address: address, email: email, password: password, isLecturer: true
                       };
@@ -122,7 +122,7 @@ export class RegisterComponent implements OnInit {
                           alert(`User named ${userName} successfully registered as a lecturer`);
                           sessionStorage.setItem("IsLecturer", JSON.stringify(true));
                           sessionStorage.setItem("User", JSON.stringify(this.user));
-                          sessionStorage.setItem("CoursesForLecturer", JSON.stringify(course));
+                          sessionStorage.setItem("CourseIdForLecturer", JSON.stringify(course));
                           this.router.navigate(['/course/all']);
                         },
                         error: (error) => {
@@ -130,6 +130,9 @@ export class RegisterComponent implements OnInit {
                         }
                       });
                     } else {
+                      this.user = {
+                        id: 0, name: userName, address: address, email: email, password: password, isLecturer: false
+                      };
                       this.userService.addUser(this.user).subscribe({
                         next: (data) => {
                           console.log("user - yes");
@@ -162,7 +165,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onChangeIsLecturer() {
-    console.log("isLecturer: ", this.isLecturer);
     this.isLecturer = !this.isLecturer;
   }
 }

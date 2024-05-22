@@ -25,6 +25,7 @@ export class UserService {
         else
             return of(false);
     }
+
     //lecturers
     getLecturers(): Observable<User[]> {
         const url = `${this.apiUrl}/Lecturer`;
@@ -35,26 +36,10 @@ export class UserService {
         return this._http.post<User>(url, user);//לשאול בפונקציה השולחת האם התקבל NULL , אם כן אז יש לבחור שם אחר
     }
     getLecturerById(id: number): Observable<User> {
-        const url = `${this.apiUrl}/${id}`;
+        const url = `${this.apiUrl}/Lecturer/${id}`;
         return this._http.get<User>(url);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -192,65 +177,3 @@ export class UserService {
     //         isLecturer: false
     //     }
     // ];
-
-    // getUserById(id: number): Observable<User> {//אולי אובד - אבל אין צורך ---------------------------------------------------------------------------
-    //     const url = `${this.apiUrl}/User/${id}`;
-    //     return this._http.get<User>(url);
-    //     // return of(this.APP_USERS.find(l => l.id == id));
-    // }
-
-    // getUserByName(name: string): Observable<User> {//אולי אובד - אבל אין צורך ---------------------------------------------------------------------------
-    //     const url = `${this.apiUrl}/User/${name}`;
-    //     return this._http.get<User>(url);
-    //     // return of(this.APP_USERS.find(l => l.id == id));
-    // }
-
-
-    // login(name: string): Observable<User> {//אולי אובד - אבל אין צורך ---------------------------------------------------------------------------
-    //     const url = `${this.apiUrl}/User/${name}`;
-
-    //     return this._http.get<User>(url);//מחזיר אובייקט מסוג USER ויש לבדוק שהסיסמא שלו שווה לסיסמא שהזין המשתמש
-    //     // return of(user);
-    // }
-    // addUser(user: User): Observable<User> {
-    //     const url = `${this.apiUrl}/User`;
-    //     return this._http.post<User>(url, user);//לשאול בפונקציה השולחת האם התקבל NULL , אם כן אז יש לבחור שם אחר
-    //     // return of(user);
-    // }
-
-    // addUser(user: User | null): Observable<boolean> {
-    //     if (user) {
-    //         return this._http.post<boolean>('/api/User', user);
-    //     } else {
-    //         return of(false);
-    //     }
-    // }
-    //Lecturer
-
-    // getLecturerById(id: number): Observable<User> {//אולי אובד - אבל אין צורך --------------------------------------------------------------------------------
-    //     const url = `${this.apiUrl}/Lecturer/${id}`;
-    //     return this._http.get<User>(url);
-    // }
-
-    // createLecturer(lecturer: Lecturer): Observable<Lecturer> {
-    //     return this.http.post<Lecturer>(this.apiUrl, lecturer);
-    // }
-    // addUser(user: User): Observable<User> {
-    //     let id = user.id;
-    //     this.USERS.push(user)
-    //     // return of(this.USERS.find(l => l.id == id));
-    //     return this._http.post<User>("/api/User", user);
-    // }
-
-    // updateLecturer(lecturer: Lecturer): Observable<Lecturer> {
-    //     const url = `${this.apiUrl}/${lecturer.id}`;
-    //     return this.http.put<Lecturer>(url, lecturer);
-    // }
-
-    // deleteLecturer(id: number): Observable<void> {
-    //     const url = `${this.apiUrl}/${id}`;
-    //     return this.http.delete<void>(url);
-    // }
-
-
-

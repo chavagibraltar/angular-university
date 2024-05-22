@@ -4,10 +4,6 @@ import { NotFoundComponent } from 'src/app/not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
-// import { RegisterComponent } from './register/register.component';
-// import { LogoutComponent } from './logout/logout.component';
-// import { LoginComponent } from './login/login.component';
-// import { RegisterComponent } from './register/register.component';
 
 const ROUTES: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },

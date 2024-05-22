@@ -1,16 +1,18 @@
 <mat-card class="example-card course-card">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-subtitle>{{ lecturer?.name }}</mat-card-subtitle>
+        <mat-card-subtitle>
+            {{ lecturer?.name }}
+        </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]="course?.image" alt="{{ course?.name }}" class="course-image">
     <mat-card-content>
         <p><b>{{ course?.name }}</b></p>
-        <p>Lessons count: {{ course?.amount }}</p>
-        <p>Study mode: {{ course?.studyMode }}</p>
+        <p>Lessons amount: {{ course?.amount }}</p>
+        <p>Study mode: {{ studyModeIcon }}</p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button (click)="onCardClicked()"  [disabled]="!isLoggedIn()">Details</button>
+        <button mat-button (click)="onCardClicked()" [disabled]="!isLoggedIn()">Details</button>
     </mat-card-actions>
 </mat-card>
 

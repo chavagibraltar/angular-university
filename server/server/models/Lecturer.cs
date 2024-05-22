@@ -2,7 +2,7 @@
 {
     public class Lecturer
     {
-        static int index = 0;
+        static int index = 1;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

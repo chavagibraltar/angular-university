@@ -26,79 +26,51 @@ export class CourseCardComponent implements OnInit {
   lecturerName: string | undefined;
   categoryIcon: string | undefined;
   imageUrl = '/assets/courses-images/camera.jpg'; // נתיב ברירת מחדל לתמונה
-  
+  studyModeIcon: any;
   constructor(
     private router: Router,
     private userService: UserService,
     private categoryService: CategoryService,
     private elementRef: ElementRef
-    ) { }
-    ngOnInit(): void {
-      
-      console.log("course id: ", this?.course?.id);
-      console.log("course - id: ", this?.course?.id, "name: ", this?.course?.name, "category id: ", this?.course?.lecturerId, "lec id: desc: ", this?.course?.description);
-      this.getLecturer();
-      this.getCategory();
-      this.elementRef.nativeElement.querySelector('.example-header-image').style.backgroundImage = `url(${this.category?.iconRouting})`;
+  ) { }
+
+  ngOnInit(): void {
+    this.getLecturer();
+    this.getCategory();
+    this.setStudyMode();
+    this.elementRef.nativeElement.querySelector('.example-header-image').style.backgroundImage = `url(${this.category?.iconRouting})`;
+  }
+
+  onCardClicked(): void {
+    this.router.navigate(['course/details', this?.course?.id]);
+  }
+
+  getLecturer(): void {
+    this.userService.getLecturerById(this?.course?.lecturerId).subscribe((lecturer: User) => {
+      this.lecturerName = lecturer?.name;
+      this.lecturer = lecturer;
+    });
+  }
+
+  getCategory(): void {
+    this.categoryService.getCategoryById(this?.course?.lecturerId).subscribe((category: Category) => {
+      this.categoryIcon = category?.iconRouting;
+      this.category = category;
+    });
+  }
+
+  isLoggedIn(): boolean {
+    return !!sessionStorage.getItem('User');
+  }
+
+  setStudyMode() {
+    if (this.course.studyMode == 1) {
+      this.studyModeIcon = "people"
+      this.studyModeIcon = "Frontal"
     }
-    
-    onCardClicked(): void {
-      this.router.navigate(['course/details', this?.course?.id]);
-    }
-    getLecturer(): void {
-      this.userService.getLecturerById(this?.course?.lecturerId).subscribe((lecturer: User) => {
-        this.lecturerName = lecturer?.name;
-        this.lecturer = lecturer;
-      });
-    }
-    getCategory(): void {
-      this.categoryService.getCategoryById(this?.course?.lecturerId).subscribe((category: Category) => {
-        this.categoryIcon = category?.iconRouting;
-        this.category = category;
-      });
-      console.log("category id: ", this.category?.id);
-      console.log("category Name: ", this.category?.name);
-      console.log("category iconRouting: ", this.category?.iconRouting);
-    }
-    isLoggedIn(): boolean {
-      return !!sessionStorage.getItem('User');
+    else {
+      this.studyModeIcon = "videocam"
+      this.studyModeIcon = "Digital"
     }
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  // longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  // from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  // originally bred for hunting.`;
-  // imageUrl = 'https://material.angular.io/assets/img/examples/shiba1.jpg'; // נתיב ברירת מחדל לתמונה
-  // img = '..../assets/courses-images/camera.jpg'
-  // @ViewChild('cardAvatar') cardAvatar: ElementRef;
-  // export class CourseCardComponent {
-    //   @Input()
-    //   course: Course;
-    
-    //   checkDate() {
-      //     const nextWeek = new Date;
-      //     nextWeek.setDate(nextWeek.getDate() + 7)
-      //     return this.course.startDate >= new Date && this.course.startDate <= nextWeek;
-      //   }
-      // }
-      
+}

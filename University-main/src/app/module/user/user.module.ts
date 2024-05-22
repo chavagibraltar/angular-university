@@ -11,8 +11,6 @@ import { RegisterComponent } from './register/register.component';
 import { MatButtonModule } from '@angular/material/button';
 import { LogoutComponent } from './logout/logout.component';
 
-
-
 @NgModule({
   declarations: [
     LoginComponent,

@@ -1,3 +1,26 @@
+/* 1 */
+.course-filter-form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.filtered-courses {
+    list-style: none;
+    padding: 0;
+}
+
+.filtered-courses li {
+    margin-bottom: 10px;
+}
+
+/* 2 */
 .all-courses-container {
     margin: 20px;
 }
@@ -16,7 +39,7 @@
     border-radius: 5px;
 }
 
-/* נחמ */
+/* 2*/
 mat-accordion {
     display: flex;
     flex-wrap: wrap;

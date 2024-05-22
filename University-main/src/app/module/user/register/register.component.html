@@ -2,28 +2,30 @@
 <div class="register-container">
     <h1>Register</h1>
     <form [formGroup]="registerForm" #registerFormElement>
-        <mat-form-field>
+        <mat-form-field class="input-section">
             <mat-label>User Name</mat-label>
             <input matInput type="text" formControlName="userName">
             <mat-error *ngIf="!this.registerForm.value.userName">This field is <strong>required</strong></mat-error>
             <!-- <mat-error *ngIf="registerForm.controls['userName'].errors['required']">Name is <strong>required</strong></mat-error> -->
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="input-section">
             <mat-label>Address</mat-label>
             <input matInput type="text" formControlName="address">
+            <!-- <mat-icon matSuffix>home</mat-icon> -->
+
             <mat-error *ngIf="!this.registerForm.value.address.valid">This field is <strong>required</strong></mat-error>
             <!-- <mat-error *ngIf="registerForm.controls['address'].errors['required']">address is <strong>required</strong></mat-error> -->
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width input-section">
             <mat-label>Email</mat-label>
             <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+            <mat-icon matSuffix>email</mat-icon>
             <mat-error *ngIf="!this.registerForm.value.email.valid">This field is <strong>required</strong></mat-error>
-            
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="input-section">
             <mat-label>Password</mat-label>
             <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" >
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -31,14 +33,14 @@
             <mat-error *ngIf="!this.registerForm.value.password.valid">This field is <strong>required</strong></mat-error>
         </mat-form-field>
 
-        <mat-form-field [formGroup]="courseForm" *ngIf="isLecturer">
+        <mat-form-field [formGroup]="courseForm" *ngIf="isLecturer"  class="input-section">
             <mat-label>Course</mat-label>
             <input matInput type="text" formControlName="course">
             <mat-error *ngIf="!this.courseForm.value.course.valid">This field is <strong>required</strong></mat-error>
             <!-- <mat-error *ngIf="registerForm.controls['course'].errors['required']">course is <strong>required</strong></mat-error> -->
         </mat-form-field>
 
-        <button type="submit" (click)="onSubmit()" class="btn btn-primary"
+        <button mat-button type="submit" (click)="onSubmit()" class="btn btn-primary"  class="input-section"
             [disabled]="registerForm.invalid">submit</button>
         <p class="mt-3">
             Already have an account?
